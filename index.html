@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guerlain Lambert</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --myGreen: #007722;
+            --myGold: #cfa03c;
+            --instForest: #004e3f;
+            --instTeal: #1a919a;
+            --instPurple: #585fa8;
+            --instClem: #ec6739;
+            --instRed: #b22133;
+            --instTan: #a38c5f;
+            --instBlack: #252525;
+
+            --colPrimary: var(--instForest);
+            --colSecondary: var(--myGreen);
+            --colAlert: var(--instClem);
+            --colInfo: var(--instTeal);
+            --colTheorem: var(--instPurple);
+            --colDanger: var(--instRed);
+            --colSubtle: var(--instTan);
+            --colText: var(--instBlack);
+            
+            --bg-color: #fafafa;
+        }
+
+        body {
+            font-family: 'Inconsolata', Roboto, Helvetica, Arial, sans-serif;
+            color: var(--colText);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: #ffffff;
+            border-bottom: 3px solid var(--colPrimary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--colPrimary);
+            text-decoration: none;
+            margin: 0.5rem 1rem;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--colAlert);
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem 3rem 2rem;
+            background-color: var(--colPrimary);
+            color: white;
+            border-bottom: 5px solid var(--myGold);
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--myGold);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            background-color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 2rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--myGold);
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding-top: 5rem; 
+            margin-top: -3rem;
+        }
+
+        h2 {
+            color: var(--colPrimary);
+            border-bottom: 2px solid var(--colSubtle);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            color: var(--colSecondary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--colAlert);
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--colSecondary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--colAlert);
+            color: white;
+            text-decoration: none;
+        }
+
+        ul.custom-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul.custom-list li {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--colInfo);
+        }
+
+        .date-tag {
+            color: var(--colSubtle);
+            font-weight: bold;
+            float: right;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--colPrimary);
+            color: white;
+        }
+        .teaching-stats {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: var(--instForest);
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-total {
+            font-weight: bold;
+            font-size: 1rem;
+            color: var(--myGold);
+        }
+
+        .stat-detail {
+            font-size: 0.9rem;
+            color: #d0d0d0;
+        }
+        .level-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.level-l3 { background-color: rgba(26, 145, 154, 0.15); color: var(--instTeal);   border: 1px solid var(--instTeal); }
+.level-m1 { background-color: rgba(88, 95, 168, 0.15);  color: var(--instPurple); border: 1px solid var(--instPurple); }
+.level-m2 { background-color: rgba(163, 140, 95, 0.15); color: var(--instTan);    border: 1px solid var(--instTan); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#awards">Awards</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#cv">CV</a>
+</nav>
+
+<header id="about">
+    <img src="photo.jpg" alt="Profile Picture" class="profile-pic">
+    
+    <h1>Guerlain Lambert</h1>
+    <p>PhD Student @ Centrale Lyon / Institut Camille Jordan</p>
+    
+    <div class="social-links">
+        <a href="https://scholar.google.com/citations?user=8WUgAVgAAAAJ" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+        <a href="https://github.com/gulambert" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://orcid.org/0009-0003-6691-4593" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+        <a href="https://www.linkedin.com/in/guerlain-lambert/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        
+    </div>
+<p>Hi ! I'm a third (and last 🤞🏻) year PhD student at Centrale Lyon in applied mathematics. I'm supervised by Céline Helbert (Centrale Lyon) and Claire Lauvernet (INRAE Lyon).
+    I'm working on surrogate modeling of complex computer code in the context of Global Sensitivity Analysis.
+</p>
+
+</header>
+<div class="container">
+    <section id="research">
+        <h2>Research Interests</h2>
+        <p>My work primarily focuses on the following topics :</p>
+        <ul>
+            <li> Metamodeling via Gaussian processes with complex data (dependent and functional data).</li>
+            <li> Sensitivity analysis (Sobol indices, DGSM, ...).</li>
+            <li> Bayesian optimization.</li>
+            <li> Application to environmental models (water ressources, pesticide transports).</li>
+        </ul>
+    </section>
+
+    <section id="publications">
+        <h2>Recent Publications</h2>
+        <ul class="custom-list">
+            <li>
+                <span class="date-tag">2025</span>
+                <strong>Gradient-based Active Learning with Gaussian Processes for Global Sensitivity Analysis</strong><br>
+                <u>G. Lambert</u>, C. Helbert, C. Lauvernet.<br>
+                <em>Preprint (under review)</em>.<br>
+                <a href="https://arxiv.org/abs/2601.11790">[Link]</a>
+            </li>
+            <li>
+                <span class="date-tag">2024</span>
+                <strong>Quantization-Based Latin Hypercube Sampling for Dependent Inputs With an Application to Sensitivity Analysis of Environmental Models</strong><br>
+                <u>G. Lambert</u>, C. Helbert, C. Lauvernet.<br>
+                <em>Applied Stochastic Models in Business and Industry</em>.<br>
+                <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/asmb.2899">[Link]</a>
+            </li>
+        </ul>
+    </section>
+
+        <section id="awards">
+        <h2>Awards</h2>
+        <ul class="custom-list">
+            <li>
+                <span class="date-tag">2026</span>
+                <strong>Best Oral presentation Award</strong><br>
+                <em>RT-UQ / MASCOT-NUM 2026</em><br>
+                <em>ENSAI, Rennes, France</em><br>
+                "Gradient-based Active Learning with Gaussian Processes for Global Sensivity Analysis".
+            </li>
+            <li>
+                <span class="date-tag">2025</span>
+                <strong>Best Poster presentation Award</strong><br>
+                <em>RT-UQ / MASCOT-NUM 2025</em><br>
+                <em>Giens, France</em><br>
+            </li>
+        </ul>
+    </section>
+
+<section id="teaching">
+    <h2>Teaching</h2>
+
+    <div class="teaching-stats">
+        <span class="stat-total">174h in total</span>
+        <span class="stat-detail">@ Centrale Lyon</span>
+    </div>
+
+    <ul class="custom-list">
+        <li>
+            <span class="date-tag">2026</span>
+            <strong>Machine Learning and Applications</strong> — tutorials (8h)<br>
+            <span class="level-tag level-m1">M1</span> Centrale Lyon
+        </li>
+        <li>
+            <span class="date-tag">2025</span>
+            <strong>Probability-Statistics</strong> — tutorials (34h)<br>
+            <span class="level-tag level-l3">L3</span> Centrale Lyon<br>
+            <strong>Statistics for Engineers</strong> — tutorials (12h)<br>
+            <span class="level-tag level-m2">M2</span> Centrale Lyon
+        </li>
+        <li>
+            <span class="date-tag">2024</span>
+            <strong>Probability-Statistics</strong> — tutorials (40h)<br>
+            <span class="level-tag level-l3">L3</span> Centrale Lyon<br>
+            <strong>Statistics for Engineers</strong> — tutorials (16h)<br>
+            <span class="level-tag level-m2">M2</span> Centrale Lyon<br>
+            <strong>Machine Learning and Applications</strong> — tutorials (8h)<br>
+            <span class="level-tag level-m1">M1</span> Centrale Lyon
+        </li>
+        <li>
+            <span class="date-tag">2023</span>
+            <strong>Probability-Statistics</strong> — tutorials (16h)<br>
+            <span class="level-tag level-l3">L3</span> Centrale Lyon<br>
+            <strong>Numerical Analysis</strong> — tutorials (30h)<br>
+            <span class="level-tag level-l3">L3</span> Centrale Lyon<br>
+            <strong>Applied Analysis</strong> — tutorials (4h)<br>
+            <span class="level-tag level-l3">L3</span> Centrale Lyon<br>
+            <strong>Machine Learning and Applications</strong> — tutorials (6h)<br>
+            <span class="level-tag level-m1">M1</span> Centrale Lyon
+        </li>
+    </ul>
+</section>
+    
+    <section id="cv">
+        <h2>Curriculum Vitae</h2>
+        <p>For more details about my academic background, please see my full CV (version : April, 7 2026):</p>
+        <a href="docs/cv.pdf" class="btn" target="_blank">Curriculum Vitae</a>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2026 Guerlain Lambert. Hosted on <a href="https://pages.github.com/" style="color: var(--myGold);">GitHub Pages</a>.</p>
+</footer>
+
+</body>
+</html>
